@@ -15,7 +15,12 @@ const Cover = () => {
           z-0
           '
         >
-          <Image src={'/images/cover-1.png'} layout='fill' objectFit='cover' />
+          <Image
+            src={'/images/cover-1.png'}
+            layout='fill'
+            objectFit='cover'
+            alt='cover'
+          />
         </div>
         <div
           className={`absolute bottom-16 left-0 right-0 

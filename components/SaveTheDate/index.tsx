@@ -12,6 +12,7 @@ const SaveTheDate = () => {
               src={'/images/frame-tl.png'}
               layout='fill'
               objectFit='cover'
+              alt='frame-top-left'
             />
           </div>
         </div>
@@ -21,6 +22,7 @@ const SaveTheDate = () => {
               src={'/images/frame-tr.png'}
               layout='fill'
               objectFit='cover'
+              alt='frame-top-right'
             />
           </div>
         </div>
@@ -30,6 +32,7 @@ const SaveTheDate = () => {
               src={'/images/frame-br.png'}
               layout='fill'
               objectFit='cover'
+              alt='frame-bottom-right'
             />
           </div>
         </div>
@@ -39,6 +42,7 @@ const SaveTheDate = () => {
               src={'/images/frame-bl.png'}
               layout='fill'
               objectFit='cover'
+              alt='frame-bottom-left'
             />
           </div>
         </div>

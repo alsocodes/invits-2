@@ -12,6 +12,7 @@ const Cover2In = () => {
             layout='fill'
             objectFit='cover'
             className=''
+            alt='cover'
           />
           <div className='absolute -bottom-1 left-0 -right-10 -ml-10'>
             <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'>

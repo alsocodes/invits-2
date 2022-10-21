@@ -26,11 +26,13 @@ const Couple = () => {
         <div className=''>
           <div className='w-[310px] h-[310px] mx-auto'>
             <img
+              alt='brige'
               src={'/images/bride.png'}
               className='w-[260px] h-[260px] rounded-full bordexr border-red-500 ml-[25px] mt-[25px]'
             />
 
             <img
+              alt='frame-bride'
               className='bordexr border-blue-400 w-full h-full -mt-[285px]'
               src={'/images/frame1.png'}
             />
@@ -62,11 +64,13 @@ const Couple = () => {
         <div className=''>
           <div className='w-[310px] h-[310px] mx-auto'>
             <img
+              alt='groom'
               src={'/images/groom.png'}
               className='w-[260px] h-[260px] rounded-full bordexr border-red-500 ml-[25px] mt-[25px]'
             />
 
             <img
+              alt='frame-groom'
               className='bordexr border-blue-400 w-full h-full -mt-[285px]'
               src={'/images/frame1.png'}
             />

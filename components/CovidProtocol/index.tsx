@@ -25,6 +25,7 @@ const CovidProtocol = () => {
                 src={'/images/logo-bca.png'}
                 layout='fill'
                 objectFit='cover'
+                alt='logo-bca'
               />
             </div>
           </div>
@@ -53,21 +54,41 @@ const CovidProtocol = () => {
           </div>
           <div className='flex gap-6 md:gap-12 justify-center text-base-100 w-full bordxer border-red-400 mb-6 md:mb-12 text-sm'>
             <div className='w-[160px] text-center border border-base-100 p-2 rounded-sm'>
-              <Image src={'/images/masker.png'} width='100' height='100' />
+              <Image
+                src={'/images/masker.png'}
+                width='100'
+                height='100'
+                alt='masker'
+              />
               <div>Membawa Memakai Masker</div>
             </div>
             <div className='w-[160px] text-center border border-base-100 p-2 rounded-sm'>
-              <Image src={'/images/cuci-tangan.png'} width='100' height='100' />
+              <Image
+                src={'/images/cuci-tangan.png'}
+                width='100'
+                height='100'
+                alt='wash'
+              />
               <div>Cuci tangan dengan sabun/handsanitizer</div>
             </div>
           </div>
           <div className='flex gap-6 md:gap-12 justify-center text-base-100 w-full bordxer border-red-400'>
             <div className='w-[160px] text-center  border border-base-100 p-2 rounded-sm'>
-              <Image src={'/images/distance.png'} width='100' height='100' />
+              <Image
+                src={'/images/distance.png'}
+                width='100'
+                height='100'
+                alt='distance'
+              />
               <div>Jaga jarak aman selama acara</div>
             </div>
             <div className='w-[160px] text-center  border border-base-100 p-2 rounded-sm'>
-              <Image src={'/images/salam.png'} width='100' height='100' />
+              <Image
+                src={'/images/salam.png'}
+                width='100'
+                height='100'
+                alt='salam'
+              />
               <div>Tidak berjabat tangan</div>
             </div>
           </div>

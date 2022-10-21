@@ -12,7 +12,12 @@ const Cover2 = ({ setIsOpen, isOpen }) => {
       <div className='w-full h-full'>
         <div className='h-2/3 md:w-[600px] md:mx-auto relative overflow-hidden'>
           {/* <div className='h-2/3 full relative'> */}
-          <Image src={'/images/cover-1.png'} layout='fill' objectFit='cover' />
+          <Image
+            src={'/images/cover-1.png'}
+            layout='fill'
+            objectFit='cover'
+            alt='cover'
+          />
           <div className='absolute -bottom-1 left-0 -right-32 overflow-hidden'>
             <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'>
               <path
