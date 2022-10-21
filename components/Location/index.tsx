@@ -22,7 +22,11 @@ const Location = () => {
         />
       </div>
       <div className='flex justify-center'>
-        <a href='https://goo.gl/maps/ZFfcH8d7EG9sdMCD7' target='_blank'>
+        <a
+          href='https://goo.gl/maps/ZFfcH8d7EG9sdMCD7'
+          target='_blank'
+          rel='noreferrer'
+        >
           <button className='btn btn-primary text-white m-4'>
             <FaDirections className='mr-2' /> Petunjuk Arah
           </button>
