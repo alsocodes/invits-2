@@ -6,24 +6,26 @@ import { FaInstagram } from 'react-icons/fa';
 const Couple = () => {
   return (
     <div className='px-4 py-6 md:py-20 bg-base-100'>
-      <div
-        style={{ fontFamily: 'Dancing Script' }}
-        className='text-center text-2xl mb-2'
-      >
-        Assalamualaikum Wr, Wb.
-      </div>
-      <div className='text-center text-base'>
-        <p className='mb-1'>
-          Maha suci Allah SWT yang telah menciptakan makhluk-Nya
-          berpasang-pasangan.
-        </p>
-        <p>
-          Ya Allah, perkenankanlah kami merangkai kasih sayang yang Kau ciptakan
-          di antara putra-putri kami:
-        </p>
+      <div data-aos='fade-up' data-aos-duration='500'>
+        <div
+          style={{ fontFamily: 'Dancing Script' }}
+          className='text-center text-2xl mb-2'
+        >
+          Assalamualaikum Wr, Wb.
+        </div>
+        <div className='text-center text-base'>
+          <p className='mb-1'>
+            Maha suci Allah SWT yang telah menciptakan makhluk-Nya
+            berpasang-pasangan.
+          </p>
+          <p>
+            Ya Allah, perkenankanlah kami merangkai kasih sayang yang Kau
+            ciptakan di antara putra-putri kami:
+          </p>
+        </div>
       </div>
       <div className='block md:flex md:items-center md:justify-center md:mt-10'>
-        <div className=''>
+        <div className='' data-aos='fade-up'>
           <div className='w-[310px] h-[310px] mx-auto'>
             <img
               alt='brige'
@@ -61,7 +63,7 @@ const Couple = () => {
         >
           &
         </div>
-        <div className=''>
+        <div className='' data-aos='fade-up'>
           <div className='w-[310px] h-[310px] mx-auto'>
             <img
               alt='groom'
@@ -89,7 +91,7 @@ const Couple = () => {
             </a>
           </Link>
           <div className='text-center text-base mt-2'>
-            Putri ke-1 dari 5 bersaudara <br />
+            Putra ke-1 dari 5 bersaudara <br />
             Bapak Hasanudin & Ibu Jumiati
           </div>
         </div>

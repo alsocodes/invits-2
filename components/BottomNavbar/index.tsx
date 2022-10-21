@@ -6,7 +6,7 @@ const BottomNavbar = ({ isOpen }) => {
     <div
       className={`${
         !isOpen && 'hidden'
-      } btm-nav bg-white z-20 text-primary shadow-2xl shadow-slate-700`}
+      } btm-nav bg-white z-20 lg:px-32 xl:px-72 text-primary shadow-2xl shadow-slate-700`}
     >
       <button>
         <FaHome />

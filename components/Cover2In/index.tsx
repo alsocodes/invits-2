@@ -4,7 +4,7 @@ import styles from './Cover.module.css';
 
 const Cover2In = () => {
   return (
-    <div className={`w-full h-full overflow-hidden bg-[#dbf4e1]`}>
+    <div id='cover-in' className={`w-full h-full overflow-hidden bg-[#dbf4e1]`}>
       <div className='w-full h-full'>
         <div className='h-2/3 md:w-[600px] md:mx-auto relative overflow-hidden'>
           <Image
