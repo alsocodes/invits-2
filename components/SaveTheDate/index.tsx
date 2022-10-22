@@ -4,7 +4,10 @@ import { FaCalendarCheck, FaClock, FaMapMarkedAlt } from 'react-icons/fa';
 
 const SaveTheDate = () => {
   return (
-    <div className='px-4 py-16 md:py-24 bg-white relative min-h-screen overflow-hidden'>
+    <div
+      id='the-date'
+      className='px-4 py-16 md:py-24 bg-white relative min-h-screen overflow-hidden'
+    >
       <div className=''>
         <div className='absolute top-0 left-0'>
           <div className='w-[150px] h-[150px] sm:[w-200px] sm:h-[15ppx] md:w-[250px] md:h-[250px] lg:w-[350px] lg:h-[350px] relative'>

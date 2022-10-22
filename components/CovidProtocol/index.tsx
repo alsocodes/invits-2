@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 import { FaCopy } from 'react-icons/fa';
+import { CopyMe } from '../../lib/helper';
 
 const CovidProtocol = () => {
   return (
@@ -36,7 +37,10 @@ const CovidProtocol = () => {
             </div>
           </div>
           <div className='flex justify-center my-2'>
-            <button className='btn btn-sm btn-info text-white self-center'>
+            <button
+              onClick={() => CopyMe('1011368684')}
+              className='btn btn-sm btn-info text-white self-center'
+            >
               <FaCopy className='mr-2' />
               Copy Rekening
             </button>

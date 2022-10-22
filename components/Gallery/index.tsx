@@ -43,7 +43,10 @@ const Gallery = () => {
     },
   ];
   return (
-    <div className='px-4 py-16 md:py-24 relative w-full overflow-hidden'>
+    <div
+      id='the-gallery'
+      className='px-4 py-16 md:py-24 relative w-full overflow-hidden'
+    >
       <div className='absolute top-0 left-0'>
         <div className='w-[150px] h-[150px] sm:[w-200px] sm:h-[15ppx] md:w-[250px] md:h-[250px] lg:w-[350px] lg:h-[350px] relative'>
           <Image

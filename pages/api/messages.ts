@@ -15,9 +15,13 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         .find({})
         .sort({})
         .toArray();
-      res.status(200).json({ message: `success`, data: messages });
+      return res
+        .status(200)
+        .json({ success: true, message: `success`, data: messages });
     } else {
       return res.status(404).end();
     }
-  } catch (error) {}
+  } catch (error) {
+    return res.status(500).json({ error });
+  }
 };

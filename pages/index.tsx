@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from 'react';
 import { FaPause, FaPlay } from 'react-icons/fa';
 import BottomNavbar from '../components/BottomNavbar';
 import Couple from '../components/Couple';
-import Cover from '../components/Cover';
 import Cover2 from '../components/Cover2';
 import Cover2In from '../components/Cover2In';
 import CovidProtocol from '../components/CovidProtocol';
@@ -23,20 +22,26 @@ const Home: NextPage = () => {
   const [messages, setMessages] = useState(null);
 
   const getGuest = (guestId) => {
-    apiCall('GET', `/api/guest/${guestId}`).then((data) => {
-      setGuestData(data);
-    });
+    fetch(`/api/guest/${guestId}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.success) setGuestData(data?.data);
+      });
   };
 
   const getAllMessages = () => {
-    apiCall('GET', `/api/messages`).then((data) => {
-      setMessages(data);
-    });
+    fetch(`/api/messages`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log('xna data xx', data?.data);
+        if (data?.success) setMessages(data?.data);
+      });
   };
 
   useEffect(() => {
     if (guest) {
       getGuest(guest);
+      console.log('xna getting guest');
     }
   }, [guest]);
 
@@ -61,7 +66,7 @@ const Home: NextPage = () => {
   const bukaUndangan = () => {
     setIsPlaying(!player.current.paused);
     player.current.play();
-    const div = document.getElementById('cover-in');
+    const div = document.getElementById('the-home');
 
     if (div) {
       setTimeout(() => {
@@ -79,15 +84,66 @@ const Home: NextPage = () => {
     }
   };
 
+  const [activeMenu, setActiveMenu] = useState('the-home');
+  const navigationAction = (to) => {
+    const div = document.getElementById(to);
+    setActiveMenu(to);
+    if (div) {
+      setTimeout(() => {
+        window.scrollTo({
+          top: div.offsetTop,
+          behavior: 'smooth',
+        });
+      }, 100);
+
+      setTimeout(() => {
+        //@ts-ignore:next-line
+        if (document.activeElement) document.activeElement.blur();
+      }, 100);
+    }
+  };
+
+  useEffect(() => {
+    const sections = [
+      document.getElementById('the-home'),
+      document.getElementById('the-couple'),
+      document.getElementById('the-date'),
+      document.getElementById('the-gallery'),
+      document.getElementById('the-book'),
+    ];
+    const handleScroll = (event) => {
+      // console.log('window.scrollY', window.scrollY);
+      const scrollPosition =
+        document.documentElement.scrollTop || document.body.scrollTop;
+      // for (let i = 0; i < sections.length; i++) {
+      //   const section = sections[i];
+      //   if (section.offsetTop <= scrollPosition * 1.7) {
+      //     console.log('xna-aaa', section?.id);
+      //   }
+      // }
+      const inframes = sections.filter(
+        (a) => a.offsetTop <= scrollPosition * 1.7,
+        []
+      );
+      // console.log('xna-aa', inframes[inframes?.length - 1]?.id);
+      // setActiveMenu(inframes[inframes?.length - 1]?.id);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <Landing
       data={{
-        title: 'Inviits',
+        title: 'The Wedding Of Vega & Firdaus - Invits',
       }}
     >
       {/* <div className={`h-screen w-full ${!isOpen && 'overflow-hidden'}`}> */}
       <div className={`h-screen w-full ${!isOpen && 'overflow-hidden'}`}>
-        {guest}
         <Cover2
           setIsOpen={setIsOpen}
           isOpen={isOpen}
@@ -99,22 +155,30 @@ const Home: NextPage = () => {
         <CovidProtocol />
         <Gallery />
         <LoveStory />
-        <GuestBook guestData={guestData} messages={messages} />
+        <GuestBook
+          guestData={guestData}
+          messages={messages}
+          getAllMessages={getAllMessages}
+        />
         <Location />
-        <div className="absolute -left-[1000px]">
+        <div className='absolute -left-[1000px]'>
           <audio
             ref={player}
             loop
             controls
-            src="/images/music.mp3"
+            src='/images/music.mp3'
             // type='audio/mpeg'
           />
         </div>
-        <div className="w-full h-20"></div>
-        <BottomNavbar isOpen={isOpen} />
-        <div className="relative">
+        <div className='w-full h-20'></div>
+        <BottomNavbar
+          isOpen={isOpen}
+          navigationAction={navigationAction}
+          activeMenu={activeMenu}
+        />
+        <div className='relative'>
           <button
-            className="btn btn-outline btn-sm m-2 fixed left-0 bottom-16"
+            className='btn btn-outline btn-sm m-2 fixed left-0 bottom-16'
             onClick={() => togglePlay()}
           >
             {!isPlaying ? <FaPause /> : <FaPlay />}

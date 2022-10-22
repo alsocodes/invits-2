@@ -15,7 +15,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         .toArray();
 
       if (guests?.length === 0)
-        return res.status(404).json({ message: `${one} tidak ditemukan` });
+        return res
+          .status(404)
+          .json({ success: false, message: `${one} tidak ditemukan` });
 
       const guest = guests[0];
       const message = await db
@@ -23,8 +25,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         .find({ guestId: guest?.guestId })
         .toArray();
       return res.status(200).json({
-        ...guest,
-        message: message[0],
+        success: true,
+        data: {
+          ...guest,
+          message: message[0],
+        },
       });
     } else if (method === 'POST') {
       const { message, confirm } = req.body;
@@ -53,7 +58,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         await db.collection('guestBook').updateOne(
           { _id: check0?._id },
           {
-            $set: { content: message, updatedAt: updatedAt },
+            $set: { content: message, updatedAt: updatedAt, confirm: confirm },
           }
         );
         return res.status(200).json({

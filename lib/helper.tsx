@@ -42,4 +42,14 @@ async function apiCall(method = 'GET', url = '', data = {}) {
   return response.json(); // parses JSON response into native JavaScript objects
 }
 
-export { slugify, apiCall };
+const CopyMe = (TextToCopy) => {
+  var TempText = document.createElement('input');
+  TempText.value = TextToCopy;
+  document.body.appendChild(TempText);
+  TempText.select();
+
+  document.execCommand('copy');
+  document.body.removeChild(TempText);
+};
+
+export { slugify, apiCall, CopyMe };

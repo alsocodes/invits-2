@@ -5,7 +5,7 @@ import { FaInstagram } from 'react-icons/fa';
 
 const Couple = () => {
   return (
-    <div className='px-4 py-6 md:py-20 bg-base-100'>
+    <div id='the-couple' className='px-4 py-6 md:py-20 bg-base-100'>
       <div data-aos='fade-up' data-aos-duration='500'>
         <div
           style={{ fontFamily: 'Dancing Script' }}
