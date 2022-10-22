@@ -13,8 +13,61 @@ import Landing from '../components/layout/Landing';
 import Location from '../components/Location';
 import LoveStory from '../components/LoveStory';
 import SaveTheDate from '../components/SaveTheDate';
+import { useRouter } from 'next/router';
+import {
+  collection,
+  deleteDoc,
+  doc,
+  DocumentData,
+  getDocs,
+  limit,
+  query,
+  QueryDocumentSnapshot,
+  updateDoc,
+  where,
+} from '@firebase/firestore';
+import { firestore } from '../lib/firebase';
 
 const Home: NextPage = () => {
+  const router = useRouter();
+  const { guest } = router.query;
+  const [guestData, setGuestData] = useState(null);
+
+  const todosCollection = collection(firestore, '/guests');
+  const getGuest = async () => {
+    // const todosQuery = query(
+    //   todosCollection
+    //   // where('guestId', '==', 'alishodikin')
+    //   // limit(10)
+    // );
+    // const querySnapshot = await getDocs(todosQuery);
+    // const result: QueryDocumentSnapshot<DocumentData>[] = [];
+    // // console.log('xna 11', querySnapshot);
+    // querySnapshot.forEach((snapshot) => {
+    //   result.push(snapshot);
+    // });
+    // setGuestData(result);
+
+    const q = query(collection(firestore, 'invits2'));
+
+    const querySnapshot = await getDocs(q);
+    console.log('xna xna', querySnapshot);
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      console.log(doc.id, ' => ', doc.data());
+    });
+  };
+
+  useEffect(() => {
+    if (guest) {
+      getGuest();
+    }
+  }, [guest]);
+
+  useEffect(() => {
+    console.log('xna guest data', guestData);
+  }, [guestData]);
+
   const [isOpen, setIsOpen] = useState(false);
 
   const [isPlaying, setIsPlaying] = useState(true);
@@ -29,14 +82,7 @@ const Home: NextPage = () => {
       player.current.pause();
     }
   };
-
-  // useEffect(() => {
-  //   if (player !== null) player.current.play();
-  // }, [player]);
-
   const bukaUndangan = () => {
-    // e.preventDefault();
-    // const to = e.target.getAttribute('data-to');
     setIsPlaying(!player.current.paused);
     player.current.play();
     const div = document.getElementById('cover-in');
@@ -65,6 +111,7 @@ const Home: NextPage = () => {
     >
       {/* <div className={`h-screen w-full ${!isOpen && 'overflow-hidden'}`}> */}
       <div className={`h-screen w-full ${!isOpen && 'overflow-hidden'}`}>
+        {guest}
         <Cover2
           setIsOpen={setIsOpen}
           isOpen={isOpen}
