@@ -84,7 +84,7 @@ const Home: NextPage = () => {
     }
   };
 
-  const [activeMenu, setActiveMenu] = useState('the-home');
+  const [activeMenu, setActiveMenu] = useState('the-homex');
   const navigationAction = (to) => {
     const div = document.getElementById(to);
     // setActiveMenu(to);
