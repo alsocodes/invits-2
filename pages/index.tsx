@@ -14,59 +14,35 @@ import Location from '../components/Location';
 import LoveStory from '../components/LoveStory';
 import SaveTheDate from '../components/SaveTheDate';
 import { useRouter } from 'next/router';
-import {
-  collection,
-  deleteDoc,
-  doc,
-  DocumentData,
-  getDocs,
-  limit,
-  query,
-  QueryDocumentSnapshot,
-  updateDoc,
-  where,
-} from '@firebase/firestore';
-import { firestore } from '../lib/firebase';
+import { apiCall } from '../lib/helper';
 
 const Home: NextPage = () => {
   const router = useRouter();
   const { guest } = router.query;
   const [guestData, setGuestData] = useState(null);
+  const [messages, setMessages] = useState(null);
 
-  const todosCollection = collection(firestore, '/guests');
-  const getGuest = async () => {
-    // const todosQuery = query(
-    //   todosCollection
-    //   // where('guestId', '==', 'alishodikin')
-    //   // limit(10)
-    // );
-    // const querySnapshot = await getDocs(todosQuery);
-    // const result: QueryDocumentSnapshot<DocumentData>[] = [];
-    // // console.log('xna 11', querySnapshot);
-    // querySnapshot.forEach((snapshot) => {
-    //   result.push(snapshot);
-    // });
-    // setGuestData(result);
+  const getGuest = (guestId) => {
+    apiCall('GET', `/api/guest/${guestId}`).then((data) => {
+      setGuestData(data);
+    });
+  };
 
-    const q = query(collection(firestore, 'invits2'));
-
-    const querySnapshot = await getDocs(q);
-    console.log('xna xna', querySnapshot);
-    querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-      console.log(doc.id, ' => ', doc.data());
+  const getAllMessages = () => {
+    apiCall('GET', `/api/messages`).then((data) => {
+      setMessages(data);
     });
   };
 
   useEffect(() => {
     if (guest) {
-      getGuest();
+      getGuest(guest);
     }
   }, [guest]);
 
   useEffect(() => {
-    console.log('xna guest data', guestData);
-  }, [guestData]);
+    getAllMessages();
+  }, []);
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -117,28 +93,28 @@ const Home: NextPage = () => {
           isOpen={isOpen}
           bukaUndangan={bukaUndangan}
         />
-        <Cover2In />
+        <Cover2In guestData={guestData} />
         <Couple />
         <SaveTheDate />
         <CovidProtocol />
         <Gallery />
         <LoveStory />
-        <GuestBook />
+        <GuestBook guestData={guestData} messages={messages} />
         <Location />
-        <div className='absolute -left-[1000px]'>
+        <div className="absolute -left-[1000px]">
           <audio
             ref={player}
             loop
             controls
-            src='/images/music.mp3'
+            src="/images/music.mp3"
             // type='audio/mpeg'
           />
         </div>
-        <div className='w-full h-20'></div>
+        <div className="w-full h-20"></div>
         <BottomNavbar isOpen={isOpen} />
-        <div className='relative'>
+        <div className="relative">
           <button
-            className='btn btn-outline btn-sm m-2 fixed left-0 bottom-16'
+            className="btn btn-outline btn-sm m-2 fixed left-0 bottom-16"
             onClick={() => togglePlay()}
           >
             {!isPlaying ? <FaPause /> : <FaPlay />}
