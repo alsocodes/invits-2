@@ -87,7 +87,7 @@ const Home: NextPage = () => {
   const [activeMenu, setActiveMenu] = useState('the-home');
   const navigationAction = (to) => {
     const div = document.getElementById(to);
-    setActiveMenu(to);
+    // setActiveMenu(to);
     if (div) {
       setTimeout(() => {
         window.scrollTo({
